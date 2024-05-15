@@ -1,0 +1,31 @@
+{
+  "name": "lattice",
+  "version": "1.0.0",
+  "description": "assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Belalirshad/lattice.git"
+  },
+  "author": "Belal Irshad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Belalirshad/lattice/issues"
+  },
+  "homepage": "https://github.com/Belalirshad/lattice#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
