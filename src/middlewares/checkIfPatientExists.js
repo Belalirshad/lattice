@@ -2,17 +2,28 @@ const con = require("./../config/db");
 const { validationResult } = require('express-validator');
  module.exports = async (req,res,next) => {
     try {
-        const {name} = req.body;
+        const {email, phone} = req.body;
+      
         const errors = validationResult(req);
     
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
-        const sql = 'SELECT * FROM psychiatrist WHERE name = ?';
-        const rows = await query(sql, [name]);
-        console.log(rows);
-        if(!rows.length) {
-            return res.status(404).send({error : "Psychiatrist not found"})
+
+      
+        if(!req.file) {
+            return res.status(400).send({errors : [{
+                "type": "field",
+                "msg": "Photo field cannot be empty",
+                "path": "photo",
+                "location": "req.file"
+            }]})
+        }
+        const sql = 'SELECT * FROM patient WHERE email = ? OR phone = ? ';
+        const rows = await query(sql, [email, phone]);
+        
+        if(rows.length) {
+            return res.status(404).send({error : "Patient already registered"})
         }
         req.user = rows[0];
         next();

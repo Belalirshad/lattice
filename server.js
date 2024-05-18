@@ -14,8 +14,19 @@ app.get("/", (req, res) => {
 
 // calling routes
 app.use("/patient", require("./src/routes/patient.routes"));
+app.use("/", require("./src/routes/auth.routes"));
 
-
+// app.get("/hospital", (req, res) => {
+//   con.query("SELECT * FROM hospital", (err, result) => {
+//     if (err) {
+//       console.error("Error:", err);
+//       res.status(500).send({ error: "Internal server error" });
+//     } else {
+//       res.status(200).json(result);
+//       console.log(result);
+//     }
+//   });
+// });
 
 app.listen(port, () => {
   console.log(`server is running on port : ${port}`);

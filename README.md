@@ -9,7 +9,7 @@ The project is developed with Node.js and Express.js, and the database used for 
 
 1. [../server.js] -> For handling requests and responses.
 
-2. [../.env] -> Contains PORT ,
+2. [../.env] -> Contains PORT , SECRET, SALT
 
 3. [src/config/db.js] -> To create and connect database on MySQL.
 
@@ -29,18 +29,29 @@ The project is developed with Node.js and Express.js, and the database used for 
 
 ```
 ├── src/
-│   ├── config
-│   ├── controllers
-│   ├── middlewares
-│   ├── model
-│   ├── routes
+│   ├── config/
+│       ├──db.js
+│   ├── controllers/
+│       ├──auth.controller.js
+│       ├──patient.controller.js
+│   ├── middlewares/
+│       ├──checkIfPatientExists.js
+│       ├──checkIfUserExists.js
+│       ├──index.js
+│   ├── routes/
+│       ├──auth.routes.js
+│       ├──patient.routes.js
 │   ├── services
-│   ├──utils
-│   ├── validators
-│   ├──view
-│   └── models/
-│       ├── subscribers.js
+│   ├──utils/
+│       ├──token.utils.js
+│       ├──cloudinary.utils.js
+│       ├──multer.utils.js
+│   ├── validators/
+│       ├──auth.validators.js
+│   └──view
+│
 ├── .env
+├── .env.example
 ├── .gitignore
 ├── {} package-lock.json
 ├── {}package.json
@@ -58,17 +69,25 @@ Once installed, Clone this repository to your **local** machine.
 git clone https://github.com/Belalirshad/lattice.git
 ```
 
-Install the required dependencies as mentioned below by using **npm install <packageName>**.
+Install the required dependencies as mentioned below by using
 
-Start the server by **npm run dev**
+```sh
+npm install <packageName>
+```
+
+Start the server by
+
+```sh
+npm run dev
+```
 
 ## Environment Configuration
 
 Duplicate `.env.example` to `.env` and configure the environment variables:
 
-- `MySQL_CONNECTION_STRING`: MySQL connection string.
-- `PORT` : Your PORT number
-- `ACCESS_TOKEN_SECRET`: Secret key for JWT token generation and verification.
+- `PORT`: Your Port Number.
+- `SECRET`: Token Secret
+- `SALT`: Bcrypt JS
 
 ## Dependencies
 
@@ -81,3 +100,9 @@ Following dependencie are needed to run this application:
 3. MySQL
 
 4. Nodemon
+
+## Postman API Documentation
+
+```sh
+url: https://documenter.getpostman.com/view/33307695/2sA3JT4eQK
+```

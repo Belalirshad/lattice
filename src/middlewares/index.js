@@ -1,3 +1,4 @@
 module.exports = {
-    checkIfUserExists : require("./checkIfUserExists")
+    checkIfUserExists : require("./checkIfUserExists"),
+    checkIfPatientExists: require("./checkIfPatientExists"),
 }
